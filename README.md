@@ -8,6 +8,13 @@ For iOS.
 	alert('Status Bar height: ' + (TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight));
 
 
+## Toggle in-call status bar event listener
+	var win = Ti.UI.createWindow();
+	win.addEventListener('changelayout', function(e){
+		Ti.API.info(e);
+	});
+
+
 ## License
 The MIT License (MIT)
 Copyright (c) 2013 Kosuke Isobe

@@ -22,6 +22,11 @@ label.addEventListener('click', function(){
 	alert('applicationFrame: ' + TiDisplay.applicationFrameWidth + 'x' + TiDisplay.applicationFrameHeight);
 });
 
+win.addEventListener('changelayout', function(e){
+	Ti.API.info(e);
+});
+
+
 // TODO: write your module tests here
 var TiDisplay = require('be.k0suke.tidisplay');
 Ti.API.info("module is => " + TiDisplay);
