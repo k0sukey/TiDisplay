@@ -9,9 +9,15 @@ For iOS.
 
 
 ## Toggle in-call status bar event listener
-	var win = Ti.UI.createWindow();
+	var statusBarHeight = TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight;
+
 	win.addEventListener('changelayout', function(e){
-		Ti.API.info(e);
+		changedHeight = TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight;
+
+		if (statusBarHeight !== changedHeight) {
+			Ti.API.info('Toggle in-call status bar(changed status bar height) ' + statusBarHeight + ' -> ' + changedHeight);
+			statusBarHeight = changedHeight;
+		}
 	});
 
 

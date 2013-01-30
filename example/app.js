@@ -3,6 +3,8 @@
 // to test out the module and to provide instructions 
 // to users on how to use it by example.
 
+var TiDisplay = require('be.k0suke.tidisplay');
+Ti.API.info("module is => " + TiDisplay);
 
 // open a single window
 var win = Ti.UI.createWindow({
@@ -22,11 +24,13 @@ label.addEventListener('click', function(){
 	alert('applicationFrame: ' + TiDisplay.applicationFrameWidth + 'x' + TiDisplay.applicationFrameHeight);
 });
 
+var statusBarHeight = TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight;
+
 win.addEventListener('changelayout', function(e){
-	Ti.API.info(e);
+	changedHeight = TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight;
+
+	if (statusBarHeight !== changedHeight) {
+		Ti.API.info('Toggle in-call status bar(changed status bar height) ' + statusBarHeight + ' -> ' + changedHeight);
+		statusBarHeight = changedHeight;
+	}
 });
-
-
-// TODO: write your module tests here
-var TiDisplay = require('be.k0suke.tidisplay');
-Ti.API.info("module is => " + TiDisplay);
