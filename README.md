@@ -1,14 +1,16 @@
 # TiDisplay
-For iOS.
 
 
-## Usage
+## Usage iOS
 	var TiDisplay = require('be.k0suke.tidisplay');
 	alert('Not contained Status Bar: ' + TiDisplay.applicationFrameWidth + 'x' + TiDisplay.applicationFrameHeight);
 	alert('Status Bar height: ' + (TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight));
 
 
 ## Toggle in-call status bar event listener
+	var win = Ti.UI.createWindow();
+	win.open();
+
 	var statusBarHeight = TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight;
 
 	win.addEventListener('changelayout', function(e){
@@ -20,6 +22,18 @@ For iOS.
 		}
 	});
 
+
+## Usage Android
+	var win = Ti.UI.createWindow();
+	win.open();
+
+	win.addEventListener('postlayout', function(){
+		// IMPORTANT require the inside of postlayout event
+		var TiDisplay = require('be.k0suke.tidisplay');
+		alert('Not contained Status Bar: ' + TiDisplay.applicationFrameWidth + 'x' + TiDisplay.applicationFrameHeight);
+		alert('Status Bar height: ' + (TiDisplay.mainScreenHeight - TiDisplay.applicationFrameHeight));
+		alert('Title Bar height:' + TiDisplay.titleBarHeight);
+	});
 
 ## License
 The MIT License (MIT)
